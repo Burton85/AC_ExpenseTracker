@@ -34,6 +34,27 @@ db.once("open", () => {
       })
     );
 
+    const newUser = new Users({
+      name,
+      email,
+      password
+    });
+    //generate salt
+    bcrypt.genSalt(10, (err, salt) =>
+      //hash password
+      bcrypt.hash(newUser.password, salt, (err, hash) => {
+        if (err) throw err;
+        newUser.password = hash;
+        //save new user
+        newUser
+          .save()
+          .then(user => {
+            res.redirect("/");
+          })
+          .catch(err => console.log(err));
+      })
+    );
+
     Array(3)
       .fill()
       .forEach((_, RECORD) => {
