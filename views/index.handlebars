@@ -1,0 +1,74 @@
+<div class="container mb-5" style="width:90%">
+
+  <form action="/" class="d-block">
+    <select class="custom-select text-center" name='category' onchange="this.form.submit()">
+      <option value={{category}} disabled selected style="background-color: darkgray;">{{#if category}}{{category}}
+        {{else}}類別{{/if}}
+      </option>
+      <option value="家居物業">家居物業</option>
+      <option value="交通出行">交通出行</option>
+      <option value="休閒娛樂">休閒娛樂</option>
+      <option value="餐飲食品">餐飲食品</option>
+      <option value="其他 ">其他</option>
+    </select>
+  </form>
+  <div class="row mt-5 mb-5">
+    <h3 class="col-2">總金額:</h3>
+    <h1 class="col-10 text-center mx-5 display-1 text-danger">{{totalAmount}}</h1>
+  </div>
+
+
+  <ul class='list-group'>
+    {{#each records}}
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-auto ml-0 mr-auto container d-flex align-item-center">
+          <div class="row">
+            <span class="d-flex align-item-center col-auto">
+              {{#if this.food}}
+              <i class="fas fa-utensils" style="height:40px;width:40px"></i>
+              {{/if }}
+              {{#if this.home}}
+              <i class="fas fa-home" style="height:40px;width:40px"></i>
+              {{/if }}
+              {{#if this.bus}}
+              <i class="fas fa-bus" style="height:40px;width:40px"></i>
+              {{/if }}
+              {{#if this.smile}}
+              <i class="fas fa-smile " style="height:40px;width:40px"></i>
+              {{/if }}
+              {{#if this.pen}}
+              <i class="fas fa-pencil-alt " style="height:40px;width:40px"></i>
+              {{/if }}
+              <div class="d-inline-flex flex-column">
+                <h4 class="col-auto mb-auto mt-auto">
+                  {{{this.name}}}
+                </h4>
+                <h6 class="col-auto mb-auto mt-auto">
+                  {{this.formated_date}}
+                </h6>
+
+              </div>
+
+
+          </div>
+        </div>
+
+        <h4 class="col-auto mb-auto mt-auto">
+          ${{{this.amount}}}
+        </h4>
+
+        <div class="col-auto">
+
+          <a href="/records/{{{this.id}}}/edit" class='btn btn-primary'>edit</a>
+          <form method="POST" action="/records/{{{this.id}}}/delete?_method=DELETE" class="d-inline">
+            <button type="submit" class='btn btn-danger'>delete</button>
+          </form>
+        </div>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+
+  <a href="/records/new" class="btn btn-outline-secondary btn-block mt-5" style="font-weight: bolder;">Create</a>
+</div>

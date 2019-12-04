@@ -1,0 +1,35 @@
+<div class="container  mb-5" style="width:80%">
+  <p>*必填欄位</p>
+  <span> {{>messages}}</span>
+  <form action="/records" method="Post">
+    <div class="form-group d-block">
+      <label class='' for="name">名稱*:</label>
+      <input type="text" name='name' id='name' value={{#if records}} {{records.name}} {{/if}} class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="date">日期*：</label>
+      <input type="date" class="form-control" id="date" value={{#if records}} {{records.date}} {{/if}}name="date">
+    </div>
+
+    <div class="form-group">
+      <label for="category">類別*:</label>
+      <select class="form-control" id="category">
+        {{#if records}} <option value={{records.category}} checked> {{records.category}} </option> {{/if}}
+        <option value="家居物業">家居物業</option>
+        <option value="交通出行">交通出行</option>
+        <option value="休閒娛樂">休閒娛樂</option>
+        <option value="餐飲食品">餐飲食品</option>
+        <option value="其他 ">其他</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="amount">價格*:</label>
+      <input type="number" name='amount' id='amount' value={{#if records}} {{records.amount}} {{/if}}
+        class="form-control">
+    </div>
+    <div class="input-group-item">
+      <button type="submit" class="btn btn-success btn-block">Edit</button>
+    </div>
+  </form>
+</div>

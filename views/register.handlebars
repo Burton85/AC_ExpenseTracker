@@ -1,0 +1,35 @@
+<div class='row mt-5 mb-5'>
+  <div class="col-md-6 m-auto">
+    <div class='card card-body  border-primary'>
+      <form action="/users/register" method='post'>
+        <h1 class='text-center mb-3 '>Register</h1>
+        {{> messages}}
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" name='name' id='name' placeholder="name" class="form-control"
+            {{#if name}}value={{name}}{{/if}}>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" name='email' id='email' placeholder="email" class="form-control"
+            {{#if email}}value={{email}}{{/if}}>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" name='password' id='password' placeholder="password" class="form-control"
+            {{#if password}}value={{password}}{{/if}}>
+        </div>
+        <div class="form-group">
+          <label for="password2">Confirm Password:</label>
+          <input type="password" name='password2' id='password2' placeholder="password" class="form-control"
+            {{#if password2}}value={{password2}}{{/if}}>
+        </div>
+        <button type='submit' class="btn btn-primary btn-block mt-5 mb-3">Register</button>
+        <a href="/auth/facebook" class='btn btn-info btn-block mb-5'>Facebook Login</a>
+
+      </form>
+      <p>No Account? <a href="/users/register">register</a>
+      </p>
+    </div>
+  </div>
+</div>

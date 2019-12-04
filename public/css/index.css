@@ -1,0 +1,20 @@
+.pretty-select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: url("arrow.png") no-repeat right center transparent;
+  border: 0px;
+  width: 100%;
+  height: 34px;
+  padding-left: 2px;
+  padding-right: 40px;
+  background-color: #f6f7f7;
+  color: gray;
+}
+.pretty-select::-ms-expand {
+  display: none;
+}
+
+.pretty-select:focus {
+  box-shadow: 0 0 5px 2px #467bf4;
+}
