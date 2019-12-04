@@ -61,6 +61,7 @@ require("./config/passport.js")(passport);
 app.use(flash());
 
 app.use((req, res, next) => {
+  app.locals.layout = "/views/layouts/main.handlebars";
   res.locals.user = req.user;
   res.locals.isAuthenticated = req.isAuthenticated();
   res.locals.success_msg = req.flash("success_msg").toString();
