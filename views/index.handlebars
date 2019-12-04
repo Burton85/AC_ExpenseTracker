@@ -1,8 +1,9 @@
 <div class="container mb-5" style="width:90%">
 
-  <form action="/" class="d-block">
-    <select class="custom-select text-center" name='category' onchange="this.form.submit()">
-      <option value={{category}} disabled selected style="background-color: darkgray;">{{#if category}}{{category}}
+  <form action="/" class="d-inline row">
+    <select class="col-6 custom-select text-center" name='category' onchange="this.form.submit()">
+      <option disabled selected style="background-color: darkgray;" value={{#if category}}{{category}}
+        {{else}}類別{{/if}}>{{#if category}}{{category}}
         {{else}}類別{{/if}}
       </option>
       <option value="家居物業">家居物業</option>
@@ -10,6 +11,24 @@
       <option value="休閒娛樂">休閒娛樂</option>
       <option value="餐飲食品">餐飲食品</option>
       <option value="其他">其他</option>
+    </select>
+    <select class="col-6 custom-select text-center" name='month' onchange="this.form.submit()">
+      <option disabled selected style="background-color: darkgray;" value={{#if month}}{{month}}{{else}}月份{{/if}}>
+        {{#if month}}{{month}}
+        {{else}}月份{{/if}}
+      </option>
+      <option value="01">1月</option>
+      <option value="02">2月</option>
+      <option value="03">3月</option>
+      <option value="04">4月</option>
+      <option value="05">5月</option>
+      <option value="06">6月</option>
+      <option value="07">7月</option>
+      <option value="08">8月</option>
+      <option value="09">9月</option>
+      <option value="10">10月</option>
+      <option value="11">11月</option>
+      <option value="12">12月</option>
     </select>
   </form>
   <div class="row mt-5 mb-5">
