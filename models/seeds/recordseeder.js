@@ -5,10 +5,16 @@ const recordsList = require("../records.json").results;
 const usersList = require("../users.json").results;
 const bcrypt = require("bcryptjs");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/books", {
-  useNewUrlParser: true,
-  useCreateIndex: true
-});
+mongoose
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/books", {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true
+  })
+  .then(() => console.log("DB Connected!"))
+  .catch(err => {
+    console.log(mongoose.connection);
+  });
 
 const db = mongoose.connection;
 
@@ -20,25 +26,8 @@ db.once("open", () => {
   console.log("mongodb connected!");
 
   usersList.forEach((item, USER) => {
-    const user = userDB(item);
-    bcrypt.genSalt(10, (err, salt) =>
-      bcrypt.hash(item.password, salt, (err, hash) => {
-        if (err) throw err;
-        user.password = hash;
-        user
-          .save()
-          .then()
-          .catch(err => {
-            console.log(err);
-          });
-      })
-    );
+    const newUser = userDB(item);
 
-    const newUser = new Users({
-      name,
-      email,
-      password
-    });
     //generate salt
     bcrypt.genSalt(10, (err, salt) =>
       //hash password
@@ -61,7 +50,7 @@ db.once("open", () => {
         if (RECORD + USER * 3 < 5) {
           recordDB.create({
             ...recordsList[RECORD + USER * 3],
-            userId: user._id
+            userId: newUser._id
           });
         }
       });
