@@ -1,8 +1,12 @@
 {
-  "name": "todo",
+  "name": "AC_ExpenseTracker",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Burton85/AC_ExpenseTracker"
+  },
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
