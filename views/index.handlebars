@@ -39,8 +39,9 @@
 
   <ul class='list-group'>
     {{#each records}}
-    <li class="list-group-item">
-      <div class="row">
+
+    <li class="list-group-item overflow-hidden">
+      <div class="row ">
         <div class="col-auto ml-0 mr-auto container d-flex align-item-center">
           <div class="row">
             <span class="d-flex align-item-center col-auto">
@@ -60,15 +61,17 @@
               <i class="fas fa-pencil-alt " style="height:40px;width:40px"></i>
               {{/if }}
               <div class="d-inline-flex flex-column">
-                <h4 class="col-auto mb-auto mt-auto">
+                <h4 class="col-auto mb-auto mt-auto ">
                   {{{this.name}}}
                 </h4>
                 <h6 class="col-auto mb-auto mt-auto">
                   {{this.formated_date}}
                 </h6>
-
               </div>
-
+              <div class="col-auto d-flex align-item-center" style="border-left:2px solid grey ;">
+                <h5 class="text-center text-secondary mt-auto mb-auto"> {{this.merchant}}
+                </h5>
+              </div>
 
           </div>
         </div>
@@ -88,6 +91,7 @@
     </li>
     {{/each}}
   </ul>
+
 
   <a href="/records/new" class="btn btn-outline-secondary btn-block mt-5" style="font-weight: bolder;">Create</a>
 </div>

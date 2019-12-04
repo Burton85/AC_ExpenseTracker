@@ -4,11 +4,16 @@ const recordDB = require("../models/records");
 const { authenticated } = require("../config/auth");
 
 router.post("/", (req, res) => {
-  const { name, category, amount, date } = req.body;
+  const { name, category, amount, date, merchant } = req.body;
   let errors = [];
   if (!name || !category || !amount || !date) {
     errors.push({
       message: "Please input the necessary information"
+    });
+  }
+  if (!amount == NaN) {
+    errors.push({
+      message: "Please input number to amount"
     });
   }
   if (errors.length > 0) {
@@ -23,6 +28,9 @@ router.post("/", (req, res) => {
       date: date,
       userId: req.user._id
     });
+    if (merchant) {
+      records.merchant = merchant;
+    }
     records.save(err => {
       if (err) return console.log(err);
       return res.redirect("/");
