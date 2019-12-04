@@ -16,18 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //import method override
 app.use(methodOverride("_method"));
 //connect with view
-app.engine(
-  "handlebars",
-  exphbs({
-    extname: "handlebars",
-    defaultLayout: "main",
-    partialsDir: path.join(__dirname, "views/partials"),
-    layoutsDir: path.join(__dirname, "views/layouts")
-  })
-);
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-app.set("views", path.join(__dirname, "views"));
-
 app.use(express.static("public"));
 
 //connect with model
@@ -71,6 +61,7 @@ require("./config/passport.js")(passport);
 app.use(flash());
 
 app.use((req, res, next) => {
+  app.locals.layout = false;
   res.locals.user = req.user;
   res.locals.isAuthenticated = req.isAuthenticated();
   res.locals.success_msg = req.flash("success_msg").toString();
