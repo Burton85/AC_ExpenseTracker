@@ -1,4 +1,4 @@
-<div class="container mb-5" style="width:90%">
+<div class="a container mb-5">
 
   <form action="/" class="d-inline row">
     <select class="col-6 custom-select text-center" name='category' onchange="this.form.submit()">
@@ -32,19 +32,19 @@
     </select>
   </form>
   <div class="row mt-5 mb-5">
-    <h3 class="col-2">總金額:</h3>
-    <h1 class="col-10 text-center mx-5 display-1 text-danger">{{totalAmount}}</h1>
+    <h3 class="col-12">總金額:</h3>
+    <h1 class="col-12 text-center display-1 text-danger">{{totalAmount}}</h1>
   </div>
 
 
   <ul class='list-group'>
     {{#each records}}
 
-    <li class="list-group-item overflow-hidden">
+    <li class="list-group-item">
       <div class="row ">
-        <div class="col-auto ml-0 mr-auto container d-flex align-item-center">
+        <div class="front-list col-6 ml-0 container d-flex align-item-center justify-content-start ">
           <div class="row">
-            <span class="d-flex align-item-center col-auto">
+            <span class="col-auto d-flex align-item-center">
               {{#if this.food}}
               <i class="fas fa-utensils" style="height:40px;width:40px"></i>
               {{/if }}
@@ -60,7 +60,7 @@
               {{#if this.pen}}
               <i class="fas fa-pencil-alt " style="height:40px;width:40px"></i>
               {{/if }}
-              <div class="d-inline-flex flex-column">
+              <div class="col-auto d-inline-flex flex-column">
                 <h4 class="col-auto mb-auto mt-auto ">
                   {{{this.name}}}
                 </h4>
@@ -68,24 +68,31 @@
                   {{this.formated_date}}
                 </h6>
               </div>
-              <div class="col-auto d-flex align-item-center" style="border-left:2px solid grey ;">
-                <h5 class="text-center text-secondary mt-auto mb-auto"> {{this.merchant}}
+              <div class="merchant col-auto d-flex align-item-center" style="border-left:2px solid grey ;">
+                <h5 class=" text-center text-secondary mt-auto mb-auto"> {{this.merchant}}
                 </h5>
               </div>
 
           </div>
         </div>
 
-        <h4 class="col-auto mb-auto mt-auto">
-          ${{{this.amount}}}
-        </h4>
 
-        <div class="col-auto">
 
-          <a href="/records/{{{this.id}}}/edit" class='btn btn-primary'>edit</a>
-          <form method="POST" action="/records/{{{this.id}}}/delete?_method=DELETE" class="d-inline">
-            <button type="submit" class='btn btn-danger'>delete</button>
-          </form>
+        <div class="row	col-6	col-sm-6	col-md-auto	col-lg-auto">
+          <h4 class="col-auto mb-auto mt-auto">
+            ${{{this.amount}}}
+          </h4>
+          <div class="flex col-auto">
+            <a href="/records/{{{this.id}}}/edit" class='btn btn-primary btn-big'>edit</a> <a
+              href="/records/{{{this.id}}}/edit" class='btn btn-primary btn-sm'>edit</a>
+            <form method="POST" action="/records/{{{this.id}}}/delete?_method=DELETE" class="d-inline">
+              <button type="submit" class='btn btn-danger btn-big'>delete</button>
+            </form>
+            <form method="POST" action="/records/{{{this.id}}}/delete?_method=DELETE" class="d-inline">
+              <button type="submit" class='btn btn-danger btn-sm'>delete</button>
+            </form>
+          </div>
+
         </div>
       </div>
     </li>

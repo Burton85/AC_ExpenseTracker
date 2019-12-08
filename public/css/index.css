@@ -1,3 +1,6 @@
+.a {
+  width: 90%;
+}
 .pretty-select {
   appearance: none;
   -moz-appearance: none;
@@ -17,4 +20,30 @@
 
 .pretty-select:focus {
   box-shadow: 0 0 5px 2px #467bf4;
+}
+@media (max-width: 800px) {
+  .a {
+    width: 100%;
+  }
+  .merchant {
+    width: 0;
+    padding: 0;
+    visibility: hidden;
+    border: 0;
+  }
+  .btn-big {
+    width: 0;
+    padding: 0;
+    visibility: hidden;
+  }
+  .front-list {
+    margin-right: 0;
+  }
+}
+@media (min-width: 800px) {
+  .btn-sm {
+    width: 0;
+    padding: 0;
+    visibility: hidden;
+  }
 }
