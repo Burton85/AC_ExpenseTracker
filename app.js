@@ -20,10 +20,10 @@ app.use(methodOverride("_method"));
 app.engine(
   "handlebars",
   exphbs({
-    extname: "handlebars",
-    defaultLayout: "main",
-    partialsDir: path.join(__dirname, "views/partials"),
-    layoutsDir: path.join(__dirname, "views/Layouts")
+    // extname: "handlebars",
+    defaultLayout: "main"
+    // partialsDir: path.join(__dirname, "views/partials"),
+    // layoutsDir: path.join(__dirname, "views/layouts")
   })
 );
 app.set("view engine", "handlebars");
